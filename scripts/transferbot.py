@@ -7,7 +7,6 @@ This script transfers pages from a source wiki to a target wiki.
 It also copies edit history to a subpage.
 
 -tolang:          The target site code.
-
 -tosite:          The target site family.
 
 -prefix:          Page prefix on the new site.
@@ -89,9 +88,11 @@ def main(*args):
     """
     local_args = pywikibot.handle_args(args)
 
-    fromsite = pywikibot.Site()
-    tolang = fromsite.code
-    tofamily = fromsite.family.name
+    family = None
+
+    tolang = None
+    lang = None
+    tofamily = None
     prefix = ''
     overwrite = False
     gen_args = []
@@ -104,16 +105,26 @@ def main(*args):
             continue
         if arg.startswith('-tofamily'):
             tofamily = arg[len('-tofamily:'):]
+        if arg.startswith('-family'):
+            family = arg[len('-family:'):]
         elif arg.startswith('-tolang'):
             tolang = arg[len('-tolang:'):]
+        elif arg.startswith('-lang'):
+            lang = arg[len('-lang:'):]
         elif arg.startswith('-prefix'):
             prefix = arg[len('-prefix:'):]
         elif arg == "-overwrite":
             overwrite = True
 
+    
+    fromsite = pywikibot.Site(lang, family)
+
+    if tolang is None:
+        tolang = fromsite.code
+
     tosite = pywikibot.Site(tolang, tofamily)
     if fromsite == tosite:
-        raise TargetSiteMissing('Target site not different from source site')
+        raise TargetSiteMissing('Target site %s not different from source site %s' %(tosite, fromsite))
 
     gen = genFactory.getCombinedGenerator()
     if not gen:

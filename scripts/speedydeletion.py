@@ -2,25 +2,12 @@
 import pprint
 import codecs
 import pywikibot
+import pywikibot.speedydeletion
 from pywikibot.families.speedydeletion_family import Family
 f = Family()
 
-site = pywikibot.Site('en',"wikipedia")
-repo = site.data_repository()
-
-def p(n):
-    return pywikibot.ItemPage(repo, n).get()
-
-articles_for_deletion = p("Q4989296")
-proposed_deletion = p("Q7927732")
-speedy_deletion = p("Q5964")
-
 # take each language and check if it is the family.
-pages = [
-    articles_for_deletion,
-    speedy_deletion,
-    proposed_deletion,
-]
+pages = pywikibot.speedydeletion.pages
 
 
 todo = codecs.open('todo.sh','wb','utf-8')

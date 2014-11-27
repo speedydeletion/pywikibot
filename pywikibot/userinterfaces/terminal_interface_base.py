@@ -13,7 +13,7 @@ import sys
 import logging
 import pywikibot
 from pywikibot import config
-from pywikibot.bot import VERBOSE, INFO, STDOUT, INPUT, WARNING
+from pywikibot.bot import DEBUG, VERBOSE, INFO, STDOUT, INPUT, WARNING
 from pywikibot.tools import deprecated
 
 transliterator = transliteration.transliterator(config.console_encoding)
@@ -76,23 +76,26 @@ class UI:
             default_handler.setLevel(VERBOSE)
         else:
             default_handler.setLevel(INFO)
+        default_handler.setLevel(DEBUG)
         # this handler ignores levels above INPUT
-        default_handler.addFilter(MaxLevelFilter(INPUT))
+        #default_handler.addFilter(MaxLevelFilter(INPUT))
         default_handler.setFormatter(
             TerminalFormatter(fmt="%(message)s%(newline)s"))
         root_logger.addHandler(default_handler)
 
         # handler for level STDOUT
         output_handler = TerminalHandler(self, strm=self.stdout)
-        output_handler.setLevel(STDOUT)
-        output_handler.addFilter(MaxLevelFilter(STDOUT))
+        # output_handler.setLevel(STDOUT)
+        output_handler.setLevel(DEBUG)
+        #output_handler.addFilter(MaxLevelFilter(STDOUT))
         output_handler.setFormatter(
             TerminalFormatter(fmt="%(message)s%(newline)s"))
         root_logger.addHandler(output_handler)
 
         # handler for levels WARNING and higher
         warning_handler = TerminalHandler(self, strm=self.stderr)
-        warning_handler.setLevel(WARNING)
+        #warning_handler.setLevel(WARNING)
+        warning_handler.setLevel(DEBUG)
         warning_handler.setFormatter(
             TerminalFormatter(fmt="%(levelname)s: %(message)s%(newline)s"))
         root_logger.addHandler(warning_handler)

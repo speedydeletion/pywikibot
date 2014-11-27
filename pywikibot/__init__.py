@@ -669,11 +669,16 @@ import atexit
 atexit.register(stopme)
 
 
+import pprint
+
 # Create a separate thread for asynchronous page saves (and other requests)
 def async_manager():
     """Daemon; take requests from the queue and execute them in background."""
+    print 'starting thread'
     while True:
         (request, args, kwargs) = page_put_queue.get()
+
+        pprint.pprint(['thread',request, args, kwargs])
         if request is None:
             break
         request(*args, **kwargs)

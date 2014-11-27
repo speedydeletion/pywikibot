@@ -208,7 +208,8 @@ def init_handlers(strm=None):
     # for prompts requiring user response
 
     root_logger = logging.getLogger("pywiki")
-    root_logger.setLevel(DEBUG + 1)  # all records except DEBUG go to logger
+    #root_logger.setLevel(DEBUG + 1)  # all records except DEBUG go to logger
+    root_logger.setLevel(DEBUG)  # all records except DEBUG go to logger
     if hasattr(root_logger, 'captureWarnings'):
         root_logger.captureWarnings(True)  # introduced in Python >= 2.7
     root_logger.handlers = []  # remove any old handlers
@@ -217,7 +218,8 @@ def init_handlers(strm=None):
     ui.init_handlers(root_logger, **config.userinterface_init_kwargs)
 
     # if user has enabled file logging, configure file handler
-    if moduleName in config.log or '*' in config.log:
+    #if moduleName in config.log or '*' in config.log:
+    if True:
         if config.logfilename:
             logfile = config.datafilepath("logs", config.logfilename)
         else:

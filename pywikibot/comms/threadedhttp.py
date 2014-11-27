@@ -24,6 +24,7 @@ __docformat__ = 'epytext'
 import sys
 import re
 import threading
+import pprint
 
 if sys.version_info[0] > 2:
     from http import cookiejar as cookielib
@@ -376,7 +377,11 @@ class HttpProcessor(threading.Thread):
             self.http.disable_ssl_certificate_validation = \
                 item.kwargs.pop('disable_ssl_certificate_validation', False)
             try:
+               
+                pywikibot.debug(u"Thread %s" %  pprint.pformat([item.args,item.kwargs]), _logger)
                 item.data = self.http.request(*item.args, **item.kwargs)
+                pywikibot.debug(u"Thread Results %s" %  pprint.pformat(item.data), _logger)
+                
             finally:
                 if item.lock:
                     item.lock.release()

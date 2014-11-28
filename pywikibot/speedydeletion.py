@@ -10,7 +10,7 @@ _logger = "speedydeletion"
 import pywikibot
 
 def p(n):
-    pywikibot.debug('goign to load %s.' % n, _logger)
+    pywikibot.debug('going to load %s.' % n, _logger)
     #print 'SD going to load %s' % n
     return pywikibot.ItemPage(repo, n).get()
 

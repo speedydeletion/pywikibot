@@ -3,6 +3,11 @@ import pprint
 import codecs
 #import pywikibot
 
+from wikipedia import wikipedia as wikipedia_api
+
+wikipedia_api.set_wikidata()
+
+
 def debug(x,l):
     print x
 
@@ -24,7 +29,7 @@ class ItemPage:
         self._number=number
         
     def get(self):
-        pass
+        return wikipedia_api.page(self._number)
 
 site = Site('en',"wikipedia")
 repo = site.data_repository()
@@ -35,17 +40,20 @@ _logger = "speedydeletion"
 def p(n):
     debug('going to load %s.' % n, _logger)
     #print 'SD going to load %s' % n
-    return ItemPage(repo, n).get()
-
-articles_for_deletion = p("Q4989296")
-proposed_deletion = p("Q7927732")
-speedy_deletion = p("Q5964")
-wpdeletion = p("Q4615845") # this is normally the wrong one...
+    item = ItemPage(repo, n)
+    g = item.get()
+    return g.wbgetentities()
 
 # take each language and check if it is the family.
-pages = [
-    articles_for_deletion,
-    speedy_deletion,
-    proposed_deletion,
-    wpdeletion,
-]
+pages = {
+    'articles_for_deletion' : "Q4989296",
+    'speedy_deletion' :  'Q5964',
+    'proposed_deletion' :  'Q7927732',
+    'wpdeletion' : "Q4615845",
+}
+
+for x in pages:
+    n = pages[x]
+    d  = p(n)
+    pages[x] = d
+    #pprint.pprint(d)

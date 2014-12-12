@@ -151,10 +151,10 @@
 62 hi hiwiki
 63 diq diqwiki
 66 ur urwiki
-67 yo yowiki
-70 sw swwiki
-73 sl slwiki
-86 mdf mdfwiki
+67 yo yowiki # done
+70 sw swwiki # done
+73 sl slwiki # done
+86 mdf mdfwiki # done
 93 lo lowiki # done
 106 nap napwiki #one
 124 gd gdwiki # done

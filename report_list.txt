@@ -133,24 +133,24 @@
 23 bn bnwiki
 23 cdo cdowiki
 23 sa sawiki
-24 scn scnwiki
-26 new newwiki
-28 cbk-zam cbk_zamwiki
-28 lb lbwiki
-32 arz arzwiki
-34 ln lnwiki
-37 tr trwiki
-39 wa wawiki
-40 yi yiwiki
+24 scn scnwiki 
+26 new newwiki #
+28 cbk-zam cbk_zamwiki #
+28 lb lbwiki #
+32 arz arzwiki #
+34 ln lnwiki # 
+37 tr trwiki # 
+39 wa wawiki #
+40 yi yiwiki #
 43 zh-min-nan zh_min_nanwiki
-46 mn mnwiki
-51 ug ugwiki
-51 zh-classical zh_classicalwiki
-52 cv cvwiki
-58 so sowiki
-62 hi hiwiki
-63 diq diqwiki
-66 ur urwiki
+46 mn mnwiki #
+51 ug ugwiki # done
+51 zh-classical zh_classicalwiki # only zh 
+52 cv cvwiki #
+58 so sowiki # d
+62 hi hiwiki # done
+63 diq diqwiki # done
+66 ur urwiki # done     
 67 yo yowiki # done
 70 sw swwiki # done
 73 sl slwiki # done

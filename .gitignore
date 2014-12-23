@@ -12,3 +12,20 @@ logs*
 .idea
 pywikibot.egg-info/
 
+/#run_es.sh#
+/#todo.sh#
+/dist/pywikibot-2.0b2-py2.7.egg
+/pywikibot/##site.py##
+/pywikibot/#botirc.py#
+/pywikibot/families/#wikia_family.py#
+/pywikibot/families/#wikipedia_family.py#
+/scripts/#claimit.py#
+/scripts/#featured.py#
+/scripts/testpages.py
+/setuptools-1.1.6.tar.gz
+/todo.sh~
+/run_it.sh~
+/run_es.sh~
+/run_vi.sh~
+/report_list.txt~
+/report.txt~

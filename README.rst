@@ -1,3 +1,8 @@
+SpeedyDeletion
+==============
+
+
+
 Pywikibot Framework
 ===================
 

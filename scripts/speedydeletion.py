@@ -1,19 +1,22 @@
-#high level cat of all deletion instruction pages :Category:Wikipedia deletion https://www.wikidata.org/wiki/Q4615845
+
 import pprint
 import codecs
 import pywikibot
 import pywikibot.speedydeletion
 from pywikibot.families.speedydeletion_family import Family
+
+
+print 'high level cat of all deletion instruction pages :Category:Wikipedia deletion https://www.wikidata.org/wiki/Q4615845'
 f = Family()
 
-# take each language and check if it is the family.
-pages = pywikibot.speedydeletion.pages
+print 'take each language and check if it is the family.'
 
+pages = pywikibot.speedydeletion.load_pages()
 
 todo = codecs.open('todo.sh','wb','utf-8')
 
 for e in pages :
- #   pprint.pprint(e['labels'])
+    pprint.pprint(e['labels'])
  
     #for eid in p["entities"] :
     #    e = p["entities"][eid]

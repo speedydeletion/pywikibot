@@ -132,8 +132,8 @@
 21 tl tlwiki
 23 bn bnwiki
 23 cdo cdowiki
-23 sa sawiki
-24 scn scnwiki 
+23 sa sawiki #
+24 scn scnwiki #
 26 new newwiki #
 28 cbk-zam cbk_zamwiki #
 28 lb lbwiki #

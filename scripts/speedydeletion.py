@@ -30,7 +30,10 @@ for e in pages :
             catname = e["sitelinks"][wikiname]
             parts =catname.split(':')     
             justcatname = ':'.join(parts[1:])
-            todo.write( u"python  ./pwb.py transferbot -lang:%s -tolang:%s -tofamily:speedydeletion  -family:wikipedia '-catr:%s'\n" % (lc, lc, justcatname))
+
+            justcatname = justcatname.replace('(','\(').replace(')','\)')
+
+            todo.write( u"python  ./pwb.py transferbot -lang:%s -tolang:%s -tofamily:speedydeletion  -family:wikipedia \"-catr:%s\"\n" % (lc, lc, justcatname))
 
         else:
             #print name, "missing", wikiname

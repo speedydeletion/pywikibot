@@ -127,11 +127,11 @@
 18 sd sdwiki
 19 tg tgwiki
 20 bo bowiki
-20 ml mlwiki
-21 bjn bjnwiki
-21 tl tlwiki
-23 bn bnwiki
-23 cdo cdowiki
+20 ml mlwiki #
+21 bjn bjnwiki #
+21 tl tlwiki #
+23 bn bnwiki #
+23 cdo cdowiki #
 23 sa sawiki #
 24 scn scnwiki #
 26 new newwiki #

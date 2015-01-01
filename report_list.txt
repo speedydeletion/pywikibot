@@ -125,8 +125,8 @@
 17 am amwiki
 17 hr hrwiki
 18 sd sdwiki
-19 tg tgwiki
-20 bo bowiki
+19 tg tgwiki #
+20 bo bowiki #  
 20 ml mlwiki #
 21 bjn bjnwiki #
 21 tl tlwiki #

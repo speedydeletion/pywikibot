@@ -208,8 +208,8 @@ def init_handlers(strm=None):
     # for prompts requiring user response
 
     root_logger = logging.getLogger("pywiki")
-    #root_logger.setLevel(DEBUG + 1)  # all records except DEBUG go to logger
-    root_logger.setLevel(DEBUG)  # all records except DEBUG go to logger
+    root_logger.setLevel(INFO + 1)  # all records except DEBUG go to logger
+    #root_logger.setLevel(DEBUG)  # all records except DEBUG go to logger
     if hasattr(root_logger, 'captureWarnings'):
         root_logger.captureWarnings(True)  # introduced in Python >= 2.7
     root_logger.handlers = []  # remove any old handlers

@@ -143,38 +143,44 @@ def main(*args):
     """ % locals())
 
     for page in gen:
-        summary = "Moved page from %s" % page.title(asLink=True)
-        targetpage = pywikibot.Page(tosite, prefix + page.title())
-        edithistpage = pywikibot.Page(tosite, prefix + page.title()
-                                      + "/edithistory")
+        try:
+            summary = "Moved page from %s" % page.title(asLink=True)
+            targetpage = pywikibot.Page(tosite, prefix + page.title())
+            edithistpage = pywikibot.Page(tosite, prefix + page.title()
+                                          + "/edithistory")
 
-        if targetpage.exists() and not overwrite:
-            pywikibot.output(
-                u"Skipped %s (target page %s exists)" % (
-                    page.title(asLink=True),
-                    targetpage.title(asLink=True)
+            if targetpage.exists() and not overwrite:
+                pywikibot.output(
+                    u"Skipped %s (target page %s exists)" % (
+                        page.title(asLink=True),
+                        targetpage.title(asLink=True)
+                    )
                 )
-            )
-            continue
+                continue
 
-        pywikibot.output(u"Moving %s to %s..."
-                         % (page.title(asLink=True),
-                            targetpage.title(asLink=True)))
+            pywikibot.output(u"Moving %s to %s..."
+                             % (page.title(asLink=True),
+                                targetpage.title(asLink=True)))
 
-        pywikibot.log("Getting page text.")
-        text = page.get(get_redirect=True)
-        text += "<noinclude>\n\n<small>This page was moved from %s. It's edit history can be viewed at %s</small></noinclude>" % (
-                page.title(asLink=True, insite=targetpage.site),
-                edithistpage.title(asLink=True, insite=targetpage.site))
+            pywikibot.log("Getting page text.")
+            text = page.get(get_redirect=True)
+            text += "<noinclude>\n\n<small>This page was moved from %s. It's edit history can be viewed at %s</small></noinclude>" % (
+                    page.title(asLink=True, insite=targetpage.site),
+                    edithistpage.title(asLink=True, insite=targetpage.site))
 
-        pywikibot.log("Getting edit history.")
-        historytable = page.getVersionHistoryTable()
+            pywikibot.log("Getting edit history.")
+            historytable = page.getVersionHistoryTable()
 
-        pywikibot.log("Putting page text.")
-        targetpage.put(text, comment=summary)
+            pywikibot.log("Putting page text.")
+            targetpage.put(text, comment=summary)
 
-        pywikibot.log("Putting edit history.")
-        edithistpage.put(historytable, comment=summary)
+            pywikibot.log("Putting edit history.")
+            edithistpage.put(historytable, comment=summary)
+
+        except Exception as e:
+            print e
+            pywikibot.error("Exception occured. going to continue")
+           
 
 
 if __name__ == "__main__":
